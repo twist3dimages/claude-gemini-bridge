@@ -11,3 +11,5 @@ engines:
     enabled: false
   jacksonlinter:
     enabled: false
+  shellcheck:
+    enabled: false
