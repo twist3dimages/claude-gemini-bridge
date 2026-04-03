@@ -82,7 +82,7 @@ jobs:
 
       # Run the security analysis with default settings
       - name: Xanitizer Security Analysis
-        uses: RIGS-IT/xanitizer-action@87d13138fb113b727cbe040c744a15a2b4fe5316
+        uses: RIGS-IT/xanitizer-action@v1.0.1
         with:
           license: ${{ secrets.XANITIZER_LICENSE }}
 
@@ -95,6 +95,6 @@ jobs:
             *-Findings-List.sarif
 
       # Uploads the findings into the GitHub code scanning alert section using the upload-sarif action
-      - uses: github/codeql-action/upload-sarif@v3
+      - uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: Xanitizer-Findings-List.sarif
