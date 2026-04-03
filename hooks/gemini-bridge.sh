@@ -147,7 +147,9 @@ should_delegate_to_gemini() {
     
     if [ -n "$files" ]; then
         file_count=$(count_files "$files")
-        for file in $files; do
+        # split on whitespace safely into an array
+        IFS=$'\n\t ' read -r -a file_array <<< "$files"
+        for file in "${file_array[@]}"; do
             if [ -f "$file" ]; then
                 local file_size=$(debug_file_size "$file")
                 total_size=$((total_size + file_size))
@@ -190,7 +192,8 @@ should_delegate_to_gemini() {
     fi
     
     # Check for excluded file patterns
-    for file in $files; do
+    IFS=$'\n\t ' read -r -a file_array <<< "$files"
+    for file in "${file_array[@]}"; do
         local filename=$(basename "$file")
         if [[ "$filename" =~ $GEMINI_EXCLUDE_PATTERNS ]]; then
             debug_log 2 "Excluded file pattern detected: $filename"
