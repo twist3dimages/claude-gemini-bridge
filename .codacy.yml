@@ -9,3 +9,5 @@ engines:
     enabled: false
   metrics:
     enabled: false
+  jacksonlinter:
+    enabled: false
