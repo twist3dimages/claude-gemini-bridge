@@ -69,9 +69,15 @@ jobs:
 
       # Compile the code for Java projects and get all libraries, e.g. via Maven
       # Please adapt, if your project uses another build system to compile Java source code.
-      # Please comment out, if your project does not contain Java source code.
+      # Skip if this repository is not a Java project.
       - name: Compile Java code
-        run: mvn -B compile
+        if: ${{ always() }}
+        run: |
+          if [ -f pom.xml ]; then
+            mvn -B compile
+          else
+            echo "No pom.xml found; skipping Maven compile."
+          fi
 
       # Install all dependent libraries for JavaScript/TypeScript projects, e.g. via npm
       # Please adapt to run `npm install` in the correct directories.
