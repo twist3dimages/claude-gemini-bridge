@@ -104,3 +104,4 @@ jobs:
       - uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: Xanitizer-Findings-List.sarif
+          category: xanitizer

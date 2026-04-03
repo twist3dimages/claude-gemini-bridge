@@ -1,0 +1,11 @@
+# Codacy configuration for this repository
+# Disable static scanning tools that are not appropriate for this repo (no IaC/docker content)
+engines:
+  checkov:
+    enabled: false
+  trivy:
+    enabled: false
+  opengrep:
+    enabled: false
+  metrics:
+    enabled: false
